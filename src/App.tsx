@@ -6,6 +6,14 @@ import Signin from "./routes/Signin";
 import Signup from "./routes/Signup";
 import ProtectedLayout from "./layout/ProtectedLayout";
 import MainLayout from "./layout/MainLayout";
+import Generate from "./components/Generate";
+import Dashboard from "./routes/Dashboard";
+import CreateEditPage from "./routes/CreateEditPage";
+import MockLoadPage from "./routes/MockLoadPage";
+import MockInterviewPage from "./routes/MockInterviewPage";
+import Feedback from "./routes/Feedback";
+
+
 
 const App = () => {
   return (
@@ -29,6 +37,16 @@ const App = () => {
           </ProtectedLayout>
         }>
           {/* add all the protected routes */}
+          <Route path="/generate" element={<Generate/>} >
+            <Route index element={<Dashboard/>} />
+            <Route path=":interviewId" element={<CreateEditPage/>}/>
+            <Route path="interview/:interviewId" element={<MockLoadPage/>} />
+            <Route
+              path="interview/:interviewId/start"
+              element={<MockInterviewPage/>}
+            />
+            <Route path="feedback/:interviewId" element={<Feedback/>} />
+          </Route>
 
         </Route>
 
