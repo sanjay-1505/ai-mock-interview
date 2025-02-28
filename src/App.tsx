@@ -12,6 +12,10 @@ import CreateEditPage from "./routes/CreateEditPage";
 import MockLoadPage from "./routes/MockLoadPage";
 import MockInterviewPage from "./routes/MockInterviewPage";
 import Feedback from "./routes/Feedback";
+import Contact from "./routes/Contact";
+import AboutUs from "./routes/AboutUs";
+import Services from "./routes/Services";
+
 
 
 
@@ -22,6 +26,11 @@ const App = () => {
         {/* Public Routes */}
         <Route element={<PublicLayout/>}>
           <Route index element={<HomePage/>}/>
+          <Route path="/contact" element={<Contact/>}/>
+          <Route path="/about" element={<AboutUs/>}/>
+          <Route path="/services" element={<Services/>}/>
+
+          
         </Route>
 
         {/* Authentication Layout */}

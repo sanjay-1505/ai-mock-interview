@@ -2,47 +2,52 @@ import { Interview } from "@/types";
 import { useNavigate } from "react-router-dom";
 import { Badge } from "./ui/badge";
 import {
-    Card,
-    CardDescription,
-    CardFooter,
-    CardTitle,
+  Card,
+  CardDescription,
+  CardFooter,
+  CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Eye, Newspaper, Sparkles } from "lucide-react";
 import TooltipButton from "./TooltipButton";
 
-
-
 interface InterviewPinProps {
-    interview: Interview;
-    onMockPage?: boolean;
+  interview: Interview;
+  onMockPage?: boolean;
 }
 
+const InterviewPin = ({ interview, onMockPage = false }: InterviewPinProps) => {
+  const navigate = useNavigate();
 
-const InterviewPin = ({interview,onMockPage = false}: InterviewPinProps) => {
-
-    const navigate = useNavigate();
   return (
-    <Card className="p-4 rounded-md shadow-none hover:shadow-md shadow-gray-100 cursor-pointer transition-all space-y-4">
-         <CardTitle className="text-lg">{interview?.position}</CardTitle>
-         <CardDescription>{interview?.description}</CardDescription>
-         <div className="w-full flex items-center gap-2 flex-wrap">
+    <Card className="p-4 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer bg-white space-y-4 border border-gray-100">
+      <CardTitle className="text-xl font-semibold text-gray-900">
+        {interview?.position}
+      </CardTitle>
+
+      <CardDescription className="text-sm text-gray-800">
+        {interview?.description}
+      </CardDescription>
+
+      <div className="w-full flex items-center gap-2 flex-wrap">
         {interview?.techStack.split(",").map((word, index) => (
-            
           <Badge
             key={index}
             variant={"outline"}
-            className="text-xs text-muted-foreground hover:border-emerald-400 hover:bg-emerald-50 hover:text-emerald-900"
+            className="text-xs text-gray-700 border-gray-300 hover:border-emerald-400 hover:bg-emerald-50 hover:text-emerald-700 transition-all duration-200"
           >
             {word}
           </Badge>
         ))}
       </div>
-      <CardFooter className={cn(
+
+      <CardFooter
+        className={cn(
           "w-full flex items-center p-0",
           onMockPage ? "justify-end" : "justify-between"
-        )}>
-            <p className="text-[12px] text-muted-foreground truncate whitespace-nowrap">
+        )}
+      >
+        <p className="text-[12px] text-blue-950 truncate whitespace-nowrap">
           {`${new Date(interview?.createdAt.toDate()).toLocaleDateString(
             "en-US",
             { dateStyle: "long" }
@@ -53,8 +58,7 @@ const InterviewPin = ({interview,onMockPage = false}: InterviewPinProps) => {
         </p>
 
         {!onMockPage && (
-          <div className="flex items-center justify-center">
-            
+          <div className="flex items-center justify-center gap-2">
             <TooltipButton
               content="View"
               buttonVariant={"ghost"}
@@ -62,7 +66,7 @@ const InterviewPin = ({interview,onMockPage = false}: InterviewPinProps) => {
                 navigate(`/generate/${interview?.id}`, { replace: true });
               }}
               disabled={false}
-              buttonClassName="hover:text-sky-500"
+              buttonClassName="hover:text-sky-500 transition-colors duration-200"
               icon={<Eye />}
               loading={false}
             />
@@ -76,7 +80,7 @@ const InterviewPin = ({interview,onMockPage = false}: InterviewPinProps) => {
                 });
               }}
               disabled={false}
-              buttonClassName="hover:text-yellow-500"
+              buttonClassName="hover:text-yellow-500 transition-colors duration-200"
               icon={<Newspaper />}
               loading={false}
             />
@@ -90,17 +94,15 @@ const InterviewPin = ({interview,onMockPage = false}: InterviewPinProps) => {
                 });
               }}
               disabled={false}
-              buttonClassName="hover:text-sky-500"
+              buttonClassName="hover:text-sky-500 transition-colors duration-200"
               icon={<Sparkles />}
               loading={false}
             />
           </div>
         )}
-
       </CardFooter>
-
     </Card>
-  )
-}
+  );
+};
 
-export default InterviewPin
+export default InterviewPin;

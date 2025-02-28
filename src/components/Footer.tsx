@@ -34,7 +34,7 @@ const FooterLink: React.FC<FooterLinkProps> = ({ to, children }) => {
     <li>
       <Link
         to={to}
-        className="hover:underline text-gray-300 hover:text-gray-100"
+        className="hover:underline text-purple-300 hover:text-purple-100"
       >
         {children}
       </Link>
@@ -88,7 +88,7 @@ const Footer = () => {
           {/* Fourth Column: Address and Social Media */}
           <div>
             <h3 className="font-bold text-lg mb-4">Contact Us</h3>
-            <p className="mb-4">123 AI Street, Tech City, 12345</p>
+            
             <div className="flex gap-4">
               <SocialLink
                 href="https://facebook.com"

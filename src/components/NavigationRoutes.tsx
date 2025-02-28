@@ -20,7 +20,7 @@ const NavigationRoutes = ({isMobile=false} : NavigationRoutesProps) => {
         className={({ isActive }) =>
           cn(
             "text-base text-neutral-600",
-            isActive && "text-neutral-900 font-semibold"
+            isActive && "text-neutral-900 font-extrabold"
           )
         }
       >

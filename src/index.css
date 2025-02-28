@@ -65,7 +65,7 @@
   }
 
   .text-outline {
-    color: white;
+    color: rgb(225, 213, 213);
     text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.6),
       /* Top-left */ 1px -1px 0 rgba(0, 0, 0, 0.6),
       /* Top-right */ -1px 1px 0 rgba(0, 0, 0, 0.6),
