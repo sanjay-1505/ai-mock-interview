@@ -129,6 +129,7 @@ const FormMockInterview = ({initialData} : FormMockInterviewProps) => {
       if(initialData){
         //update
         if (isValid) {
+          //create new mock interview
           const aiResult = await generateAiResponse(data);
 
           await updateDoc(doc(db, "interviews", initialData?.id), {
@@ -166,6 +167,8 @@ const FormMockInterview = ({initialData} : FormMockInterviewProps) => {
     }
   }  
 
+
+//for dispalying all the values in the feild while editing
   useEffect(() => {
     if (initialData) {
       form.reset({
